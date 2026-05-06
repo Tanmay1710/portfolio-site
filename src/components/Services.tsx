@@ -1,103 +1,84 @@
-"use client";
-
 import React from "react";
-import { motion } from "framer-motion";
-
-const services = [
-  {
-    title: "Workflow Audit",
-    description:
-      "Map your current processes, identify bottlenecks, and prioritize high‑impact automation opportunities.",
-    icon: "⚡",
-    gradient: "from-emerald-500 to-teal-500",
-    features: ["Process discovery", "ROI analysis", "Roadmap creation"],
-  },
-  {
-    title: "Build & Deploy",
-    description:
-      "Custom automation solutions using Python, Power Platform, APIs, and cloud services.",
-    icon: "🔧",
-    gradient: "from-blue-500 to-purple-500",
-    features: ["Python scripting", "Power Automate flows", "API integrations"],
-  },
-  {
-    title: "Optimize & Scale",
-    description:
-      "Monitor performance, refine logic, and scale solutions as your business grows.",
-    icon: "📈",
-    gradient: "from-orange-500 to-red-500",
-    features: ["Performance monitoring", "Error handling", "Scale‑up support"],
-  },
-];
+import Reveal from "@/components/Reveal";
+import { profile } from "@/lib/profile";
 
 export default function Services() {
   return (
     <section
-      id="services"
-      className="py-32 px-6 bg-gradient-to-b from-slate-950 to-slate-900"
+      id="experience"
+      className="border-y border-sky-100 bg-[#f3f7ff] px-6 py-20 dark:border-slate-800 dark:bg-slate-900"
     >
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-3xl md:text-5xl font-black mb-6 bg-gradient-to-r from-emerald-400 via-teal-400 to-blue-400 bg-clip-text text-transparent">
-            What I do
-          </h2>
-          <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            End‑to‑end automation for growing teams. From strategy to
-            deployment and beyond.
+        <Reveal className="mb-12 max-w-3xl">
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-sky-800 dark:text-sky-300">
+            Experience
           </p>
-        </motion.div>
+          <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-5xl dark:text-white">
+            Enterprise delivery with a process-first lens.
+          </h2>
+          <p className="mt-5 text-lg font-medium leading-8 text-slate-700 dark:text-slate-300">
+            Tanmay brings a business analyst&apos;s clarity to automation
+            delivery: discover the process, define the right requirement, and
+            ship systems that teams can actually adopt.
+          </p>
+        </Reveal>
 
-        {/* Services grid */}
-        <div className="grid md:grid-cols-3 gap-8">
-          {services.map((service) => (
-            <motion.div
-              key={service.title}
-              className="group"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+        <div className="grid gap-5 lg:grid-cols-3">
+          {profile.experience.map((item, index) => (
+            <Reveal
+              as="article"
+              delay={index * 0.08}
+              key={`${item.company}-${item.role}`}
+              className="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm shadow-sky-900/5 transition hover:-translate-y-1 hover:border-sky-400 hover:shadow-xl dark:border-slate-800 dark:bg-slate-950 dark:shadow-black/20 dark:hover:border-sky-500"
             >
-              <div className="rounded-3xl bg-slate-900/50 border border-slate-800 p-10 h-full transition-all duration-300 group-hover:bg-slate-800/70 group-hover:border-slate-600 group-hover:-translate-y-2 group-hover:shadow-2xl">
-                {/* Icon */}
-                <div
-                  className={`w-16 h-16 bg-gradient-to-r ${service.gradient} rounded-2xl mb-6 flex items-center justify-center`}
-                >
-                  <span className="text-2xl font-bold text-white">
-                    {service.icon}
-                  </span>
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-xl font-black text-slate-950 dark:text-white">
+                    {item.company}
+                  </h3>
+                  <p className="mt-2 text-sm font-black text-sky-800 dark:text-sky-300">
+                    {item.role}
+                  </p>
                 </div>
-
-                {/* Text */}
-                <h3 className="text-2xl font-black mb-4 text-white">
-                  {service.title}
-                </h3>
-                <p className="text-slate-300 leading-relaxed mb-6">
-                  {service.description}
+                <p className="rounded-full bg-sky-50 px-3 py-1 text-xs font-bold text-slate-700 dark:bg-slate-900 dark:text-slate-300">
+                  {item.period}
                 </p>
-
-                <ul className="text-sm text-slate-400 space-y-1 mb-6">
-                  {service.features.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
-
-                <a
-                  href="#contact"
-                  className="text-sm font-semibold uppercase tracking-wide flex items-center text-emerald-400 hover:text-emerald-300"
-                >
-                  Learn more
-                  <span className="ml-2">→</span>
-                </a>
               </div>
-            </motion.div>
+              <p className="mt-4 text-sm font-medium text-slate-500 dark:text-slate-400">
+                {item.location}
+              </p>
+              <p className="mt-5 leading-7 text-slate-700 dark:text-slate-300">
+                {item.summary}
+              </p>
+            </Reveal>
+          ))}
+        </div>
+
+        <div
+          id="skills"
+          className="mt-16 grid scroll-mt-20 gap-5 md:grid-cols-4"
+        >
+          {profile.skillGroups.map((group, index) => (
+            <Reveal
+              as="section"
+              delay={index * 0.06}
+              key={group.title}
+              className="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm shadow-sky-900/5 transition hover:-translate-y-1 hover:border-sky-400 hover:shadow-xl dark:border-slate-800 dark:bg-slate-950 dark:shadow-black/20 dark:hover:border-sky-500"
+            >
+              <h3 className="text-lg font-black text-slate-950 dark:text-white">
+                {group.title}
+              </h3>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {group.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full border border-sky-100 bg-sky-50 px-3 py-1 text-sm font-semibold text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>

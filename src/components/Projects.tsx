@@ -1,108 +1,90 @@
 import React from "react";
+import Reveal from "@/components/Reveal";
+import { profile } from "@/lib/profile";
 
 export default function Projects() {
-  const projects = [
-    {
-      title: "Sales Pipeline Automation",
-      subtitle: "CRM + Reporting Dashboard",
-      outcome: "Reduced manual reporting from 20h/week → 2h/week (90% time savings)",
-      tech: ["Power Automate", "Power BI", "Excel", "SharePoint"],
-      image: "📊",
-      gradient: "from-orange-500 to-red-500"
-    },
-    {
-      title: "Invoice Processing Bot",
-      subtitle: "Document → Database Pipeline",
-      outcome: "Automated 2,500+ invoices/month, 98% accuracy, saved ₹8L/year",
-      tech: ["Python", "Google Vision API", "PostgreSQL", "AWS Lambda"],
-      image: "🤖",
-      gradient: "from-purple-500 to-pink-500"
-    },
-    {
-      title: "Employee Onboarding Flow",
-      subtitle: "HR Process Automation",
-      outcome: "Cut onboarding time from 7 days → 2 days, zero errors",
-      tech: ["Microsoft Power Platform", "Forms", "Teams", "Active Directory"],
-      image: "👥",
-      gradient: "from-emerald-500 to-teal-500"
-    }
-  ];
-
   return (
-    <section 
+    <section
       id="projects"
-      className="py-32 px-6 bg-gradient-to-t from-slate-950 to-slate-900"
+      className="overflow-hidden bg-[#f8fbff] px-6 py-20 dark:bg-slate-950"
     >
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-5xl font-black mb-6">
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Projects & Case Studies
-            </span>
-          </h2>
-          <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Real results from recent automation projects. Each includes the business challenge, technical solution, and measurable outcomes.
+      <div className="mx-auto max-w-6xl">
+        <Reveal className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-3xl">
+            <p className="text-sm font-black uppercase tracking-[0.18em] text-sky-800 dark:text-sky-300">
+              Projects
+            </p>
+            <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-5xl dark:text-white">
+              Measurable automation outcomes.
+            </h2>
+            <p className="mt-5 text-lg font-medium leading-8 text-slate-700 dark:text-slate-300">
+              Representative case studies showing the link between business
+              process analysis, technology choices, and measurable delivery.
+            </p>
+          </div>
+          <p className="rounded-full border border-sky-100 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm shadow-sky-900/5 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
+            Swipe or shift-scroll
           </p>
-        </div>
+        </Reveal>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div 
-              key={project.title}
-              className="group relative overflow-hidden rounded-3xl bg-slate-900/50 border border-slate-800 hover:border-slate-600 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/25 hover:-translate-y-4 hover:bg-slate-800/70"
-            >
-              {/* Image/Emoji Badge */}
-              <div className={`absolute top-6 right-6 w-20 h-20 ${project.gradient} rounded-2xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300 z-10`}>
-                <span className="text-3xl">{project.image}</span>
-              </div>
-
-              {/* Content */}
-              <div className="p-10 pt-24 relative z-0 h-full">
-                <p className="text-sm uppercase tracking-wider text-slate-400 font-medium mb-2">
-                  {project.subtitle}
-                </p>
-                <h3 className="text-2xl md:text-3xl font-black mb-4 text-white leading-tight group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-red-400 group-hover:bg-clip-text">
-                  {project.title}
-                </h3>
-                
-                {/* Outcome */}
-                <div className="mb-8 p-4 bg-slate-800/50 rounded-2xl border border-slate-700">
-                  <p className="text-emerald-400 font-semibold text-lg mb-1">
-                    Outcome:
-                  </p>
-                  <p className="text-slate-200">{project.outcome}</p>
+        <div className="relative -mx-6 px-6">
+          <div className="pointer-events-none absolute bottom-5 right-0 top-0 z-10 w-24 bg-gradient-to-l from-[#f8fbff] to-transparent dark:from-slate-950" />
+          <div
+            className="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto pb-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-600 dark:focus-visible:outline-sky-300"
+            tabIndex={0}
+            aria-label="Scrollable project case studies"
+          >
+            {profile.projects.map((project, index) => (
+              <Reveal
+                as="article"
+                delay={index * 0.08}
+                key={project.title}
+                className="group relative flex min-h-[28rem] w-[85vw] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-sky-100 bg-white p-6 shadow-xl shadow-sky-900/10 transition duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-2xl md:w-[27rem] dark:border-slate-800 dark:bg-slate-900 dark:shadow-black/20"
+              >
+                <div
+                  className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${project.accent}`}
+                />
+                <div className="absolute right-5 top-5 rounded-full border border-sky-100 bg-white/90 px-3 py-1 text-xs font-black text-slate-700 shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-950/70 dark:text-slate-200">
+                  {String(index + 1).padStart(2, "0")}
                 </div>
 
-                {/* Tech Stack */}
-                <div className="mb-8">
-                  <p className="text-slate-400 text-sm font-medium uppercase tracking-wide mb-3">
-                    Tech Stack
+                <p className="mt-8 text-sm font-black uppercase tracking-[0.14em] text-sky-800 dark:text-sky-300">
+                  {project.subtitle}
+                </p>
+                <h3 className="mt-3 text-3xl font-black tracking-tight text-slate-950 dark:text-white">
+                  {project.title}
+                </h3>
+
+                <div className="my-6 rounded-xl border border-sky-100 bg-sky-50 p-5 dark:border-sky-500/20 dark:bg-sky-400/10">
+                  <p className="text-sm font-black text-sky-900 dark:text-sky-200">
+                    Outcome
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <p className="mt-2 leading-7 text-slate-800 dark:text-slate-200">
+                    {project.outcome}
+                  </p>
+                  <p className="mt-4 text-2xl font-black text-slate-950 dark:text-white">
+                    {project.metrics}
+                  </p>
+                </div>
+
+                <div className="mt-auto">
+                  <p className="text-sm font-bold text-slate-500 dark:text-slate-400">
+                    Tech stack
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-slate-800/50 border border-slate-700 rounded-full text-xs font-medium text-slate-300 hover:bg-slate-700 transition-colors"
+                        className="rounded-full border border-sky-100 bg-sky-50 px-3 py-1 text-xs font-bold text-slate-700 transition group-hover:border-sky-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
                 </div>
-
-                {/* CTA */}
-                <a 
-                  href="#contact"
-                  className="inline-flex items-center text-orange-400 hover:text-orange-300 font-semibold text-lg uppercase tracking-wide group-hover:translate-x-2 transition-all duration-300"
-                >
-                  View Case Study
-                  <span className="ml-2">→</span>
-                </a>
-              </div>
-            </div>
-          ))}
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>

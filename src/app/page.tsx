@@ -10,8 +10,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="pt-16"> 
-        {/* pt-16 so content isn't hidden behind fixed navbar */}
+      <main className="pt-16">
         <Hero />
         <Services />
         <Projects />
