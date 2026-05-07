@@ -2,6 +2,11 @@ import React from "react";
 import Reveal from "@/components/Reveal";
 import { profile } from "@/lib/profile";
 
+/**
+ * The About section component of the portfolio.
+ * Displays a professional summary, a quote, and categorized details like background,
+ * specialties, certifications, awards, and additional projects, all sourced from `profile.ts`.
+ */
 export default function About() {
   return (
     <section
@@ -10,20 +15,27 @@ export default function About() {
     >
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
         <Reveal>
+          {/* Section title */}
           <p className="text-sm font-black uppercase tracking-[0.18em] text-sky-800 dark:text-sky-300">
             About
           </p>
+          {/* Main heading for the section */}
           <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-5xl dark:text-white">
             Process transformation across global teams.
           </h2>
+          {/* Introductory paragraph */}
           <p className="mt-5 text-lg font-medium leading-8 text-slate-700 dark:text-slate-300">
             The through-line is practical: understand how people work today,
             find the bottleneck worth fixing, then build automation that can
             survive real enterprise constraints.
           </p>
         </Reveal>
-
+        {/*
+         * Right-hand content block containing a quote and various categorized lists.
+         * The `Reveal` component likely provides an animation effect on scroll.
+         */}
         <Reveal className="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm shadow-sky-900/5 md:p-8 dark:border-slate-800 dark:bg-slate-950 dark:shadow-black/20">
+          {/* Inspirational quote */}
           <blockquote className="text-2xl font-black leading-snug tracking-tight text-slate-950 dark:text-white">
             &quot;The best automation starts with understanding the human
             process it&apos;s replacing.&quot;
@@ -31,7 +43,9 @@ export default function About() {
           <p className="mt-4 text-sm font-semibold text-slate-500 dark:text-slate-400">
             {profile.name}
           </p>
-
+          {/*
+           * Grid layout for displaying background and specialties.
+           */}
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             <div className="rounded-xl bg-sky-50/80 p-5 transition hover:-translate-y-1 hover:bg-sky-50 dark:bg-slate-900">
               <h3 className="font-black text-slate-950 dark:text-white">
@@ -56,7 +70,9 @@ export default function About() {
               </ul>
             </div>
           </div>
-
+          {/*
+           * Grid layout for displaying certifications, awards, and additional projects.
+           */}
           <div className="mt-4 grid gap-4 md:grid-cols-2">
             <div className="rounded-xl bg-sky-50/80 p-5 transition hover:-translate-y-1 hover:bg-sky-50 dark:bg-slate-900">
               <h3 className="font-black text-slate-950 dark:text-white">
